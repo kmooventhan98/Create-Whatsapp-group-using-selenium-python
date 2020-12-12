@@ -1,0 +1,28 @@
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://web.whatsapp.com/")
+driver.maximize_window()
+
+name = input("Enter One name to add group:")
+gname = input("Enter Group Name:")
+number=input('How many group:')
+x=int(number)
+input("Press Enter after scan QR code")
+for x in range(x):
+    drop=driver.find_element_by_xpath('//*[@id="side"]/header/div[2]/div/span/div[3]/div/span')
+    drop.click()
+    group=driver.find_element_by_xpath('//*[@id="side"]/header/div[2]/div/span/div[3]/span/div/ul/li[1]/div')
+    group.click()
+    gropuname=driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[1]/span/div/span/div/div/div[1]/div/div/input')
+    gropuname.send_keys(name)
+    result=driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[1]/span/div/span/div/div/div[2]/div[1]/div/div/div/div/div/div[2]')
+    result.click()
+    creategroup=driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[1]/span/div/span/div/div/span/div')
+    creategroup.click()
+    groupsubject=driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[1]/span/div/span/div/div/div[2]/div/div[2]/div/div[2]')
+    y=str(x)
+    groupsubject.send_keys(gname+y)
+    finalOk=driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[1]/span/div/span/div/div/span/div/div')
+    finalOk.click()
+print("Success")
